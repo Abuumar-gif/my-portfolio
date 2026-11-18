@@ -1,0 +1,17 @@
+(function(){
+  var root=document.documentElement,btn=document.getElementById('theme');
+  try{var t=localStorage.getItem('theme2');if(t)root.setAttribute('data-theme',t)}catch(e){}
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var n=cur==='dark'?'light':'dark';root.setAttribute('data-theme',n);
+    try{localStorage.setItem('theme2',n)}catch(e){}
+  });
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var txt=b.getAttribute('data-copy'),prev=b.textContent;
+      function reset(){setTimeout(function(){b.textContent=prev},1400)}
+      function fb(){var el=b.previousElementSibling.querySelector('.v');var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected';reset()}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){b.textContent='Copied';reset()},fb)}else fb();
+    });
+  });
+})();
