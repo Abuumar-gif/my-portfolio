@@ -93,3 +93,169 @@ a{color:inherit}
 footer{padding-block:8px 32px;font:400 13px var(--f-mono);color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 @media(prefers-reduced-motion:no-preference){.btn{transition:transform .12s,box-shadow .12s}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ===== PREMIUM PORTFOLIO ANIMATIONS ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  animation: pageReveal 0.8s ease both;
+}
+
+@keyframes pageReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Premium card entrance */
+.tile {
+  animation: cardReveal 0.8s cubic-bezier(.2,.8,.2,1) both;
+  transition: transform 0.35s ease,
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Card hover effects */
+.tile:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 40px rgba(255, 195, 0, 0.16);
+}
+
+/* Intro animation */
+.s-intro {
+  animation: introReveal 1s ease both;
+}
+
+@keyframes introReveal {
+  from {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Profile photo premium effect */
+.s-photo {
+  animation: photoReveal 1.2s ease both;
+  transition: transform 0.4s ease,
+              box-shadow 0.4s ease;
+}
+
+.s-photo:hover {
+  transform: scale(1.035) rotate(1deg);
+  box-shadow: 0 0 30px rgba(255, 195, 0, 0.3);
+}
+
+@keyframes photoReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Premium buttons */
+.btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(255, 195, 0, 0.25);
+}
+
+/* Floating status */
+.s-status {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* Skills and project hover */
+.s-skills,
+.s-p1,
+.s-p2,
+.s-lead,
+.s-edu {
+  transition: transform 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.s-skills:hover,
+.s-p1:hover,
+.s-p2:hover,
+.s-lead:hover,
+.s-edu:hover {
+  transform: translateY(-5px);
+}
+
+/* Smooth navigation */
+.pill,
+.tag {
+  transition: all 0.3s ease;
+}
+
+.pill:hover,
+.tag:hover {
+  transform: translateY(-3px);
+}
+
+/* Contact section */
+.s-contact {
+  animation: contactReveal 1s ease both;
+}
+
+@keyframes contactReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
